@@ -5,6 +5,7 @@
     <color name="light">#ddd</color>
     <color name="white">#eee</color>
     <color name="purple">#AA66CC</color>
+    <color name="dark_purple">#9933CC</color>
     <color name="yellow">#FFBB33</color>
 
 </resources>
