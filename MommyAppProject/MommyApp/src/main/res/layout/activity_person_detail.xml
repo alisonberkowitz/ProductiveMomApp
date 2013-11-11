@@ -4,4 +4,51 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/personName"
+        android:text="Me"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <ImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_female"
+        android:layout_gravity="center"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskTitle"
+        android:text="My Tasks"
+        android:background="@color/dark_purple"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="248dp"
+        android:id="@+id/taskList"
+        android:background="@color/dark_purple"
+        android:layout_below="@id/imageView"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Task"
+        android:id="@+id/button"
+        android:layout_gravity="center" />
+
 </LinearLayout>
