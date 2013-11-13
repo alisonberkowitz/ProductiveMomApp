@@ -9,37 +9,44 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width= "75dp"
+        android:layout_height="200"
+        android:scaleType="fitXY"
         android:id="@+id/wine1"
-        android:background="@drawable/wine_glass"
+        android:background="@drawable/fill_0"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width= "75dp"
+        android:layout_height="200"
+        android:scaleType="fitXY"
         android:id="@+id/wine3"
-        android:background="@drawable/wine_glass"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/fill_0"
+        android:layout_below="@+id/wine1"
         android:layout_alignLeft="@+id/wine1"
-        android:layout_marginBottom="94dp" />
+        android:layout_marginTop="24dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width= "75dp"
+        android:layout_height="200"
+        android:scaleType="fitXY"
         android:id="@+id/wine2"
-        android:background="@drawable/wine_glass"
+        android:background="@drawable/fill_0"
         android:layout_alignTop="@+id/wine1"
-        android:layout_alignParentRight="true" />
+        android:layout_alignLeft="@+id/wine4" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width= "75dp"
+        android:layout_height="200"
+        android:scaleType="fitXY"
         android:id="@+id/wine4"
-        android:background="@drawable/wine_glass"
+        android:background="@drawable/fill_0"
+        android:baselineAlignBottom="true"
         android:layout_alignTop="@+id/wine3"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="44dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,9 +54,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Karen"
         android:id="@+id/textView"
-        android:layout_below="@+id/wine1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_above="@+id/wine4"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,9 +63,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Jennifer"
         android:id="@+id/textView2"
-        android:layout_marginRight="28dp"
         android:layout_alignTop="@+id/textView"
-        android:layout_alignRight="@+id/wine2" />
+        android:layout_alignLeft="@+id/wine2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,9 +72,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Katherine"
         android:id="@+id/textView3"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/wine4"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/wine3"
+        android:layout_alignLeft="@+id/wine3" />
 
     <ImageView
         android:layout_width="115dp"
@@ -77,7 +81,16 @@
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/wine_bottle"
+        android:src="@drawable/bottle_1"
         android:scaleType="fitXY" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Louis"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/wine4"
+        android:layout_alignLeft="@+id/wine4" />
 
 </RelativeLayout>

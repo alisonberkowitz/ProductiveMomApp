@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -28,6 +29,7 @@ public class MainActivity extends Activity {
         final ImageButton p2 = (ImageButton)findViewById(R.id.wine2);
         final ImageButton p3 = (ImageButton)findViewById(R.id.wine3);
         final ImageButton p4 = (ImageButton)findViewById(R.id.wine4);
+        final ImageView bottle = (ImageView) findViewById(R.id.imageView);
 
         //set wine buttons to correct image
         setMomImage(mom1, p1);
@@ -39,7 +41,7 @@ public class MainActivity extends Activity {
         p1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                i.putExtra("MOM", "Annie");
+                i.putExtra("MOM", "");
                 startActivity(i);
             }
         });
@@ -76,34 +78,47 @@ public class MainActivity extends Activity {
     public void setMomImage(Mom m, ImageButton b){
         switch (m.getPercent_full()){
             case 0:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 10:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 20:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 30:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 40:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 50:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 60:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 70:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 80:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 90:
-                b.setBackgroundResource(R.drawable.wine_glass);
-            case 100:
-                b.setBackgroundResource(R.drawable.wine_glass);
+                b.setBackgroundResource(R.drawable.fill_0);
+            case 1:
+                b.setBackgroundResource(R.drawable.fill_1);
+            case 2:
+                b.setBackgroundResource(R.drawable.fill_2);
+            case 3:
+                b.setBackgroundResource(R.drawable.fill_3);
+            case 4:
+                b.setBackgroundResource(R.drawable.fill_4);
+            case 5:
+                b.setBackgroundResource(R.drawable.fill_5);
         }
     }
 
-    public void incr_bottle(int current_image){
+    public void incr_bottle(int current_image, ImageView v){
         switch (current_image){
-            case R.drawable.wine_bottle:
-                break;
+            case R.drawable.bottle_1:
+                v.setImageResource(R.drawable.bottle_2);
+            case R.drawable.bottle_2:
+                v.setImageResource(R.drawable.bottle_3);
+            case R.drawable.bottle_3:
+                v.setImageResource(R.drawable.bottle_4);
+            case R.drawable.bottle_4:
+                v.setImageResource(R.drawable.bottle_5);
+            case R.drawable.bottle_5:
+                v.setImageResource(R.drawable.bottle_6);
+            case R.drawable.bottle_6:
+                v.setImageResource(R.drawable.bottle_7);
+            case R.drawable.bottle_7:
+                v.setImageResource(R.drawable.bottle_8);
+            case R.drawable.bottle_8:
+                v.setImageResource(R.drawable.bottle_9);
+            case R.drawable.bottle_9:
+                v.setImageResource(R.drawable.bottle_10);
+            case R.drawable.bottle_10:
+                v.setImageResource(R.drawable.bottle_11);
+            case R.drawable.bottle_11:
+                v.setImageResource(R.drawable.bottle_11);
+            case R.drawable.bottle_12:
+                v.setImageResource(R.drawable.bottle_12);
+
         }
     }
 

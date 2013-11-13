@@ -15,7 +15,12 @@ public class Mom {
 
     //increments by 10%
     public void incr_glass(){
-        setPercent_full(getPercent_full()+10);
+        if (this.getPercent_full() == 5) {
+            //for now, lets just leave it
+        }
+        else{
+            setPercent_full(getPercent_full()+1);
+        }
     }
 
 
