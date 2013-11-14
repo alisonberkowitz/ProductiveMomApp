@@ -9,12 +9,12 @@ public class Mom {
 
     private String name;
     private int percent_full;
-    private ArrayList<Task> tasks;
+    private TaskList tasks;
 
     public Mom(String name){
         this.name = name;
         this.percent_full = 0;
-        this.tasks = new ArrayList<Task>();
+        this.tasks = new TaskList();
     }
 
     //increments by 10%
@@ -45,11 +45,11 @@ public class Mom {
     }
 
 
-    public ArrayList<Task> getTasks() {
+    public TaskList getTasks() {
         return tasks;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
+    public void setTasks(TaskList tasks) {
         this.tasks = tasks;
     }
 }
