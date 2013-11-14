@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:id="@+id/wine1"
-        android:background="@drawable/fill_0"
+        android:background="@drawable/glass_0"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         />
@@ -23,7 +23,7 @@
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:id="@+id/wine3"
-        android:background="@drawable/fill_0"
+        android:background="@drawable/glass_0"
         android:layout_below="@id/wine1"
         android:layout_alignLeft="@id/wine1"
         android:layout_marginTop="24dp" />
@@ -33,16 +33,16 @@
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:id="@+id/wine2"
-        android:background="@drawable/fill_0"
-        android:layout_alignTop="@id/wine1"
-        android:layout_alignLeft="@id/wine4" />
+        android:background="@drawable/glass_0"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/wine4" />
 
     <ImageButton
         android:layout_width= "75dp"
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:id="@+id/wine4"
-        android:background="@drawable/fill_0"
+        android:background="@drawable/glass_0"
         android:baselineAlignBottom="true"
         android:layout_alignTop="@id/wine3"
         android:layout_alignParentRight="true"
