@@ -84,22 +84,24 @@ public class MainActivity extends Activity {
     public void setMomImage(Mom m, ImageButton b){
         switch (m.getPercent_full()){
             case 0:
-                b.setBackgroundResource(R.drawable.fill_0);
+                b.setBackgroundResource(R.drawable.glass_0);
             case 1:
-                b.setBackgroundResource(R.drawable.fill_1);
+                b.setBackgroundResource(R.drawable.glass_1);
             case 2:
-                b.setBackgroundResource(R.drawable.fill_2);
+                b.setBackgroundResource(R.drawable.glass_2);
             case 3:
-                b.setBackgroundResource(R.drawable.fill_3);
+                b.setBackgroundResource(R.drawable.glass_3);
             case 4:
-                b.setBackgroundResource(R.drawable.fill_4);
+                b.setBackgroundResource(R.drawable.glass_4);
             case 5:
-                b.setBackgroundResource(R.drawable.fill_5);
+                b.setBackgroundResource(R.drawable.glass_5);
         }
     }
 
     public void incr_bottle(int current_image, ImageView v){
         switch (current_image){
+            case R.drawable.bottle_0:
+                v.setImageResource(R.drawable.bottle_1);
             case R.drawable.bottle_1:
                 v.setImageResource(R.drawable.bottle_2);
             case R.drawable.bottle_2:
@@ -123,7 +125,7 @@ public class MainActivity extends Activity {
             case R.drawable.bottle_11:
                 v.setImageResource(R.drawable.bottle_11);
             case R.drawable.bottle_12:
-                v.setImageResource(R.drawable.bottle_12);
+                v.setImageResource(R.drawable.bottle_13);
 
         }
     }
