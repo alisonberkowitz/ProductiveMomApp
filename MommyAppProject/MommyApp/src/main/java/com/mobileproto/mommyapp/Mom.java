@@ -13,7 +13,7 @@ public class Mom {
 
     public Mom(String name){
         this.name = name;
-        this.percent_full = 0;
+        setPercent_full(0);
         this.tasks = new TaskList();
     }
 
@@ -29,6 +29,8 @@ public class Mom {
 
 
     public int getPercent_full() {
+
+
         return percent_full;
     }
 

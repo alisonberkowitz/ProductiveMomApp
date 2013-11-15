@@ -19,10 +19,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //get the moms
-        final Mom mom1 = getMom(1);
-        final Mom mom2 = getMom(2);
-        final Mom mom3 = getMom(3);
-        final Mom mom4 = getMom(4);
+        final Mom mom1 = new Mom("Trish");//getMom(1);
+        final Mom mom2 = new Mom("Ella");//getMom(2);
+        final Mom mom3 = new Mom("Suzie");//getMom(3);
+        final Mom mom4 = new Mom("Leslie");//getMom(4);
 
         //pull wine buttons
         final ImageButton p1 = (ImageButton)findViewById(R.id.wine1);
@@ -47,39 +47,59 @@ public class MainActivity extends Activity {
                 //b.putParcelableArrayList("tasks", mom1.getTasks());
                 //it looks like it will be a challenge to pass an ArrayList between
                 //we might do better just to pull tasks from a db/ the server
-                i.putExtras(b);
+                i.putExtra("name", "Sarah");
                 startActivity(i);
             }
         });
 
         p2.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
-                Intent i = new Intent(getApplicationContext(),PersonDetailActivity.class);
-                i.putExtra("MOM", "Annie");
+                Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
+                Bundle b = new Bundle();
+                b.putString("name", mom1.getName());
+                b.putInt("status", mom1.getPercent_full());
+                //b.putParcelableArrayList("tasks", mom1.getTasks());
+                //it looks like it will be a challenge to pass an ArrayList between
+                //we might do better just to pull tasks from a db/ the server
+                i.putExtras(b);
                 startActivity(i);
             }
         });
 
         p3.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
-                Intent i = new Intent(getApplicationContext(),PersonDetailActivity.class);
-                i.putExtra("MOM", "Annie");
+                Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
+                Bundle b = new Bundle();
+                b.putString("name", mom1.getName());
+                b.putInt("status", mom1.getPercent_full());
+                //b.putParcelableArrayList("tasks", mom1.getTasks());
+                //it looks like it will be a challenge to pass an ArrayList between
+                //we might do better just to pull tasks from a db/ the server
+                i.putExtras(b);
                 startActivity(i);
             }
         });
 
         p4.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
-                Intent i = new Intent(getApplicationContext(),PersonDetailActivity.class);
-                i.putExtra("MOM", "Annie");
+                Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
+                Bundle b = new Bundle();
+                b.putString("name", mom1.getName());
+                b.putInt("status", mom1.getPercent_full());
+                //b.putParcelableArrayList("tasks", mom1.getTasks());
+                //it looks like it will be a challenge to pass an ArrayList between
+                //we might do better just to pull tasks from a db/ the server
+                i.putExtras(b);
                 startActivity(i);
             }
         });
     }
 
+    /*
     public Mom getMom(int num){
         return null;
     }
+    */
       
     public void setMomImage(Mom m, ImageButton b){
         switch (m.getPercent_full()){
