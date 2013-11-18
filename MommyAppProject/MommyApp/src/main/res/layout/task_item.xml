@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id = "@+id/taskText"
+        android:layout_width = "wrap_content"
+        android:layout_marginLeft = "5dp"
+        android:layout_height = "50dp"
+        android:textSize = "25sp"
+        android:text = "Really Long Title"
+        android:background="@color/dark_purple"
+        android:gravity="center_vertical|left"
+        android:layout_alignTop="@+id/groupIcon" />
+
+    <CheckBox
+        android:id="@+id/completedBox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:focusable="true"
+        android:checked="false"
+        android:gravity="center"
+        android:background="@color/dark_purple"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true">
+    </CheckBox>
+
+</RelativeLayout>
