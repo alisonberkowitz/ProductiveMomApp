@@ -7,12 +7,12 @@ public class Task {
 
     String text;
     Boolean isPublic;
-    Boolean status;
+    Boolean done;
 
-    public Task(String text, Boolean isPublic, Boolean status){
+    public Task(String text, Boolean isPublic, Boolean completed){
         this.isPublic = isPublic;
         this.text = text;
-        this.status = status;
+        this.done = completed;
     }
 
     public String getText() {
@@ -32,11 +32,11 @@ public class Task {
     }
 
     public Boolean getStatus() {
-        return status;
+        return done;
     }
 
     public void setStatus(Boolean status) {
-        this.status = status;
+        this.done = status;
     }
 
 
