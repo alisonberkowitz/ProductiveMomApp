@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -18,6 +20,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //This needs to be replaced by a lookup to get the
+        //correct local moms and her friends
+        /*
+
+        * */
         //get the moms
         final Mom mom1 = new Mom("Trish");//getMom(1);
         final Mom mom2 = new Mom("Ella");//getMom(2);
@@ -25,6 +32,8 @@ public class MainActivity extends Activity {
         final Mom mom4 = new Mom("Leslie");//getMom(4);
 
         //pull wine buttons
+        //Need to set it to appropriate value based on mom's
+        //progress
         final ImageButton p1 = (ImageButton)findViewById(R.id.wine1);
         final ImageButton p2 = (ImageButton)findViewById(R.id.wine2);
         final ImageButton p3 = (ImageButton)findViewById(R.id.wine3);
@@ -118,35 +127,46 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void incr_bottle(int current_image, ImageView v){
-        switch (current_image){
-            case R.drawable.bottle_0:
-                v.setImageResource(R.drawable.bottle_1);
-            case R.drawable.bottle_1:
-                v.setImageResource(R.drawable.bottle_2);
-            case R.drawable.bottle_2:
-                v.setImageResource(R.drawable.bottle_3);
-            case R.drawable.bottle_3:
-                v.setImageResource(R.drawable.bottle_4);
-            case R.drawable.bottle_4:
-                v.setImageResource(R.drawable.bottle_5);
-            case R.drawable.bottle_5:
-                v.setImageResource(R.drawable.bottle_6);
-            case R.drawable.bottle_6:
-                v.setImageResource(R.drawable.bottle_7);
-            case R.drawable.bottle_7:
-                v.setImageResource(R.drawable.bottle_8);
-            case R.drawable.bottle_8:
-                v.setImageResource(R.drawable.bottle_9);
-            case R.drawable.bottle_9:
-                v.setImageResource(R.drawable.bottle_10);
-            case R.drawable.bottle_10:
-                v.setImageResource(R.drawable.bottle_11);
-            case R.drawable.bottle_11:
-                v.setImageResource(R.drawable.bottle_11);
-            case R.drawable.bottle_12:
-                v.setImageResource(R.drawable.bottle_13);
+    //for now, let's assume it takes 20 tasks to fill the bottle
+    //The 13 comes from the fact that we are on a 0-12 scale
+    public int setBottleLevel(ArrayList<Mom> moms){
+        int totalTasks = 0;
+        for (Mom mom:moms){
+            totalTasks += mom.getPercent_full();
+        }
+        return (int) Math.floor(((double)totalTasks)/20.0)*13 ;
+    }
 
+    //Set the level of the wine bottle based on the completeness
+    //of the mom's taks
+    public void set_bottle(int numCompleted, ImageView v){
+        switch (numCompleted){
+            case 0:
+                v.setImageResource(R.drawable.bottle_1);
+            case 1:
+                v.setImageResource(R.drawable.bottle_2);
+            case 2:
+                v.setImageResource(R.drawable.bottle_3);
+            case 3:
+                v.setImageResource(R.drawable.bottle_4);
+            case 4:
+                v.setImageResource(R.drawable.bottle_5);
+            case 5:
+                v.setImageResource(R.drawable.bottle_6);
+            case 6:
+                v.setImageResource(R.drawable.bottle_7);
+            case 7:
+                v.setImageResource(R.drawable.bottle_8);
+            case 8:
+                v.setImageResource(R.drawable.bottle_9);
+            case 9:
+                v.setImageResource(R.drawable.bottle_10);
+            case 10:
+                v.setImageResource(R.drawable.bottle_11);
+            case 11:
+                v.setImageResource(R.drawable.bottle_11);
+            case 12:
+                v.setImageResource(R.drawable.bottle_13);
         }
     }
 

@@ -17,6 +17,7 @@ public class Mom {
         this.tasks = new ArrayList<Task>();
     }
 
+
     //increments by 10%
     public void incr_glass(){
         if (this.getPercent_full() == 5) {
@@ -26,6 +27,12 @@ public class Mom {
             setPercent_full(getPercent_full()+1);
         }
     }
+
+    //get the number of tasks completed
+
+
+    //set the wine to appropriate levels based on the amount of tasks completed
+
 
 
     public int getPercent_full() {
