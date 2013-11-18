@@ -21,7 +21,6 @@ import java.util.Random;
 public class TaskListAdapter extends ArrayAdapter {
     Context context;
     List<Task> tasks;
-    ArrayList<Integer> colors = new ArrayList<Integer>();
 
 
     public TaskListAdapter(Context context, List<Task> groups){
@@ -29,9 +28,6 @@ public class TaskListAdapter extends ArrayAdapter {
         this.context = context;
         this.tasks = groups;
         Random rand = new Random();
-        for (int i = 0; i < groups.size(); i++) {
-            colors.add(rand.nextInt(360));
-        }
     }
     private class TaskHolder{
         TextView taskText;
