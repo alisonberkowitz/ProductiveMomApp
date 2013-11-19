@@ -33,6 +33,7 @@ public class PersonDetailActivity extends Activity{
 
         taskList = (ListView) findViewById(R.id.taskList);
         refreshListView();
+        tasks.add(new Task("hello1",true,false));
     }
 
     //Refresh Group List View
