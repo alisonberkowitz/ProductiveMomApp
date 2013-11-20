@@ -20,6 +20,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*pull moms from the database-- takes the identity (Mac-i you said that was trivial right?
+
+         */
+
         //This needs to be replaced by a lookup to get the
         //correct local moms and her friends
         /*
@@ -30,6 +34,7 @@ public class MainActivity extends Activity {
         final Mom mom2 = new Mom("Ella");//getMom(2);
         final Mom mom3 = new Mom("Suzie");//getMom(3);
         final Mom mom4 = new Mom("Leslie");//getMom(4);
+
 
         //pull wine buttons
         //Need to set it to appropriate value based on mom's
@@ -45,6 +50,11 @@ public class MainActivity extends Activity {
         setMomImage(mom2, p2);
         setMomImage(mom3, p3);
         setMomImage(mom4, p4);
+
+        ArrayList<Mom> moms = new ArrayList<Mom>();
+        moms.add(mom1); moms.add(mom2); moms.add(mom3); moms.add(mom4);
+
+        setBottleImage(setBottleLevel(moms), bottle);
 
         //Set on click listeners for all wine buttons
         p1.setOnClickListener(new Button.OnClickListener() {
@@ -139,7 +149,7 @@ public class MainActivity extends Activity {
 
     //Set the level of the wine bottle based on the completeness
     //of the mom's taks
-    public void set_bottle(int numCompleted, ImageView v){
+    public void setBottleImage(int numCompleted, ImageView v){
         switch (numCompleted){
             case 0:
                 v.setImageResource(R.drawable.bottle_1);
