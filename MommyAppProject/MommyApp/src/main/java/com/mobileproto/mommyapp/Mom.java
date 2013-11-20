@@ -15,6 +15,7 @@ public class Mom {
         this.name = name;
         setPercent_full(0);
         this.tasks = new ArrayList<Task>();
+        tasks.add(new Task("hello",true,false));
     }
 
 
