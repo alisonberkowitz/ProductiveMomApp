@@ -11,22 +11,35 @@ public class Mom {
     private int percent_full;
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
-    public Mom(String name){
-        this.name = name;
-        setPercent_full(0);
-        this.tasks = new ArrayList<Task>();
+    public Mom(String username){
+        this.setName(username);
+        setValuesFromServer(this.getName());
+        /*this.setName(name);
+        this.setPercent_full(0);
+        this.setTasks(new ArrayList<Task>());
+        */
+
         tasks.add(new Task("hello",true,false));
     }
 
 
     //increments by 10%
-    public void incr_glass(){
+    public void setFillLevel(){
         if (this.getPercent_full() == 5) {
             //for now, lets just leave it
         }
         else{
             setPercent_full(getPercent_full()+1);
         }
+    }
+
+    //Mac-I, please modify this so that it is actually getting
+    //values from server
+    public void setValuesFromServer(String username){
+        JsonParser j = new JsonParser(this.getName());
+        this.setName(null);
+        this.setPercent_full(0);
+        this.setTasks(null);
     }
 
 
