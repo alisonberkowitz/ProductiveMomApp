@@ -57,7 +57,6 @@ public class PersonDetailActivity extends Activity{
 
         taskList = (ListView) findViewById(R.id.taskList);
         refreshListView();
-        tasks.add(new Task("hello1",true,false));
 
         newTask.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View view) {
@@ -93,7 +92,9 @@ public class PersonDetailActivity extends Activity{
     public void refreshListView() {
         this.taskListAdapter = new TaskListAdapter(this, this.tasks);
         this.taskList.setAdapter(this.taskListAdapter);
-        this.taskListAdapter.notifyDataSetChanged();
+        Log.e("Buffer Error", name);
+        new getTaskListServerRequest(taskListAdapter).execute("http://mommytask.herokuapp.com/" +
+                name + "/getTasks");
     }
 
 

@@ -1,20 +1,26 @@
 package com.mobileproto.mommyapp;
 
+import android.preference.PreferenceManager;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Chloe Local on 11/19/13.
  */
 public class JsonParser {
+    String username = "";
 
-    private String username;
+    JsonParser(){
+    };
 
-    JsonParser(String username){
-        this.username = username;
+    JsonParser(String userName){
+        this.username = userName;
     };
 
     public ArrayList<Task> parseTaskList(){
@@ -36,6 +42,36 @@ public class JsonParser {
        JSONObject obj = new JSONObject(responseString);
        JSONArray json =  obj.getJSONArray("friends");
         return null;
+    }
+
+    public List<Task> getTasks(String responseString) {
+        List<Task> taskList = new ArrayList<Task>();
+        JSONArray jArray = new JSONArray();
+        JSONObject jsonObj = null;
+        try{
+            jsonObj = new JSONObject(responseString);
+        }catch (JSONException e){
+            Log.i("jsonParse", "error converting string to json object");
+        }
+        try {
+            jArray = jsonObj.getJSONArray("tasks");
+        } catch(JSONException e) {
+            Log.i("jsonParse", "error converting to json array");
+        }
+        for (int i=0; i < jArray.length(); i++) {
+            try {
+            JSONObject taskObject = jArray.getJSONObject(i);
+            // Pulling items from the array
+            String text = taskObject.getString("task");
+            Boolean completed = taskObject.getBoolean("completed");
+            String id = taskObject.getString("_id");
+            Task task = new Task(text, true, completed, id);
+            taskList.add(task);
+            } catch (JSONException e) {
+                Log.i("jsonParse", "error in iterating, adding tasks");
+            }
+        }
+        return taskList;
     }
 }
 /*

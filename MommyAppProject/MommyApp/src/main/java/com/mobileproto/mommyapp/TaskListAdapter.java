@@ -2,7 +2,6 @@ package com.mobileproto.mommyapp;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,7 @@ public class TaskListAdapter extends ArrayAdapter {
         CheckBox completedBox;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, ViewGroup parent){
         TaskHolder holder;
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,6 +44,19 @@ public class TaskListAdapter extends ArrayAdapter {
             holder.completedBox = (CheckBox) convertView.findViewById(R.id.completedBox);
 
             convertView.setTag(holder);
+            holder.completedBox.setOnClickListener( new View.OnClickListener() {
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v ;
+                    cb.setEnabled(false);
+                    CompleteTaskRequest updateHttpRequest = new
+                            CompleteTaskRequest();
+                    String url = "http://mommytask.herokuapp.com/" +
+                            tasks.get(position).getId() + "/completed";
+                    ArrayList urlParams = new ArrayList<String> ();
+                    urlParams.add(url);
+                    updateHttpRequest.execute(urlParams);
+                }
+            });
         } else holder = (TaskHolder) convertView.getTag();
 
         Task task = this.tasks.get(position);
