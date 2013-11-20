@@ -30,9 +30,15 @@ public class JsonParser {
     /*
 
      */
-    public int getNumTasksCompleted(String responseString) throws JSONException{
-        JSONObject obj = new JSONObject(responseString);
-        return obj.getInt("tasksCompleted");
+    public int getNumTasksCompleted(String responseString) {
+        int taskCompleted = 0;
+        try {
+            JSONObject obj = new JSONObject(responseString);
+            taskCompleted = obj.getInt("tasksCompleted");
+        } catch (JSONException e){
+
+        }
+        return taskCompleted;
     }
 
     /*Mac-i please do this one

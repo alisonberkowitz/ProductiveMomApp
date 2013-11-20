@@ -2,6 +2,7 @@ package com.mobileproto.mommyapp;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +21,14 @@ import java.util.Random;
 public class TaskListAdapter extends ArrayAdapter {
     Context context;
     List<Task> tasks;
+    Boolean mainUser;
 
 
-    public TaskListAdapter(Context context, List<Task> groups){
+    public TaskListAdapter(Context context, List<Task> groups,Boolean mainUser){
         super(context, R.layout.task_item, groups);
         this.context = context;
         this.tasks = groups;
-        Random rand = new Random();
+        this.mainUser = mainUser;
     }
     private class TaskHolder{
         TextView taskText;
@@ -64,8 +66,12 @@ public class TaskListAdapter extends ArrayAdapter {
         //check or uncheck box depending on completion status of task
         if (task.done) {
             holder.completedBox.setChecked(true);
+            holder.completedBox.setEnabled(false);
         } else {
             holder.completedBox.setChecked(false);
+        }
+        if (!mainUser) {
+            holder.completedBox.setEnabled(false);
         }
         return convertView;
     }

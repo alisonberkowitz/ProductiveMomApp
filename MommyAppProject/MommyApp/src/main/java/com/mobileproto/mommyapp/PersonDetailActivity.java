@@ -90,12 +90,12 @@ public class PersonDetailActivity extends Activity{
     }
     //Refresh Group List View
     public void refreshListView() {
-        this.taskListAdapter = new TaskListAdapter(this, this.tasks);
+
+        this.taskListAdapter = new TaskListAdapter(this, this.tasks, userName.equals(name));
         this.taskList.setAdapter(this.taskListAdapter);
         Log.e("Buffer Error", name);
         new getTaskListServerRequest(taskListAdapter).execute("http://mommytask.herokuapp.com/" +
                 name + "/getTasks");
     }
-
 
 }

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -145,7 +146,7 @@ public class MainActivity extends Activity {
     }
 
     //Set the level of the wine bottle based on the completeness
-    //of the mom's taks
+    //of the mom's tasks
     public void setBottleImage(int numCompleted, ImageView v){
         switch (numCompleted){
             case 0:
@@ -187,5 +188,15 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
+    //this method calls the async task to get the mom tasks completed
+    public void updateTasksCompleted(String momName) {
+        new GetNumberTasksCompletedRequest(this, momName).execute("http://mommytask.herokuapp.com/" +
+                momName + "/getTasksCompleted");
+    }
+
+    public void setMomsTaskCompleted(String momName, int taskCompleted) {
+        //this is called when the async task
+        //do something with the
+    }
 }
