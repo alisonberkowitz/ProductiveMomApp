@@ -58,6 +58,16 @@ public class MainActivity extends Activity {
         setMomImage(mom3, p3);
         setMomImage(mom4, p4);
 
+        //set mom names to the correct names
+        final TextView personName1 = (TextView)findViewById(R.id.textView);
+        personName1.setText(mom1.getName());
+        final TextView personName2 = (TextView)findViewById(R.id.textView2);
+        personName2.setText(mom2.getName());
+        final TextView personName3 = (TextView)findViewById(R.id.textView3);
+        personName3.setText(mom3.getName());
+        final TextView personName4 = (TextView)findViewById(R.id.textView4);
+        personName4.setText(mom4.getName());
+
         ArrayList<Mom> moms = new ArrayList<Mom>();
         moms.add(mom1); moms.add(mom2); moms.add(mom3); moms.add(mom4);
 
