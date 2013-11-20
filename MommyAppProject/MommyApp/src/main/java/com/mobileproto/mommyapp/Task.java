@@ -8,11 +8,20 @@ public class Task {
     String text;
     Boolean isPublic;
     Boolean done;
+    String id;
 
     public Task(String text, Boolean isPublic, Boolean completed){
         this.isPublic = isPublic;
         this.text = text;
         this.done = completed;
+        this.id = "";
+    }
+
+    public Task(String text, Boolean isPublic, Boolean completed, String id){
+        this.isPublic = isPublic;
+        this.text = text;
+        this.done = completed;
+        this.id = id;
     }
 
     public String getText() {
