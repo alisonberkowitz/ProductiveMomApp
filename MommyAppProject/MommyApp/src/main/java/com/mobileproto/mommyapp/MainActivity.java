@@ -20,6 +20,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //setting the username
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .edit()
+                .putString("userName", "Trish")
+                .commit();
+
         /*pull moms from the database-- takes the identity (Mac-i you said that was trivial right?
 
          */
@@ -30,7 +36,7 @@ public class MainActivity extends Activity {
 
         * */
         //get the moms
-        final Mom mom1 = new Mom("Trish");//getMom(1);
+        final Mom mom1 = new Mom(getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", ""));//getMom(1);
         final Mom mom2 = new Mom("Ella");//getMom(2);
         final Mom mom3 = new Mom("Suzie");//getMom(3);
         final Mom mom4 = new Mom("Leslie");//getMom(4);
@@ -61,13 +67,8 @@ public class MainActivity extends Activity {
         p1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                Bundle b = new Bundle();
-                b.putString("name", mom1.getName());
-                b.putInt("status", mom1.getPercent_full());
-                //b.putParcelableArrayList("tasks", mom1.getTasks());
-                //it looks like it will be a challenge to pass an ArrayList between
-                //we might do better just to pull tasks from a db/ the server
-                i.putExtra("name", "Sarah");
+                i.putExtra("name", mom1.getName());
+                i.putExtra("status", mom1.getPercent_full());
                 startActivity(i);
             }
         });
@@ -75,13 +76,8 @@ public class MainActivity extends Activity {
         p2.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                Bundle b = new Bundle();
-                b.putString("name", mom1.getName());
-                b.putInt("status", mom1.getPercent_full());
-                //b.putParcelableArrayList("tasks", mom1.getTasks());
-                //it looks like it will be a challenge to pass an ArrayList between
-                //we might do better just to pull tasks from a db/ the server
-                i.putExtras(b);
+                i.putExtra("name", mom2.getName());
+                i.putExtra("status", mom2.getPercent_full());
                 startActivity(i);
             }
         });
@@ -89,13 +85,8 @@ public class MainActivity extends Activity {
         p3.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                Bundle b = new Bundle();
-                b.putString("name", mom1.getName());
-                b.putInt("status", mom1.getPercent_full());
-                //b.putParcelableArrayList("tasks", mom1.getTasks());
-                //it looks like it will be a challenge to pass an ArrayList between
-                //we might do better just to pull tasks from a db/ the server
-                i.putExtras(b);
+                i.putExtra("name", mom3.getName());
+                i.putExtra("status", mom3.getPercent_full());
                 startActivity(i);
             }
         });
@@ -103,13 +94,8 @@ public class MainActivity extends Activity {
         p4.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                Bundle b = new Bundle();
-                b.putString("name", mom1.getName());
-                b.putInt("status", mom1.getPercent_full());
-                //b.putParcelableArrayList("tasks", mom1.getTasks());
-                //it looks like it will be a challenge to pass an ArrayList between
-                //we might do better just to pull tasks from a db/ the server
-                i.putExtras(b);
+                i.putExtra("name", mom4.getName());
+                i.putExtra("status", mom4.getPercent_full());
                 startActivity(i);
             }
         });

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,19 +26,34 @@ public class PersonDetailActivity extends Activity{
     TaskListAdapter taskListAdapter;
     ListView taskList;
     ArrayList<Task> tasks = new ArrayList<Task>();
-    String name = "";
+    String name;
+    String userName;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_detail);
         Intent intent = getIntent();
+        userName = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
+        Log.d("dauser", userName);
         final Button newTask = (Button)findViewById(R.id.button);
 
         //set the name
         name = intent.getExtras().getString("name");
+        Log.d("daname",name);
         personName = (TextView)findViewById(R.id.personName);
         personName.setText(name);
+
+        //only let them add new tasks if they are on their own tasklist
+        if (name.equals(userName)){
+            Log.d("daif", "same");
+            newTask.setVisibility(View.VISIBLE);
+        }
+        else{
+            Log.d("username: ", userName);
+            Log.d("daelse","dif");
+            newTask.setVisibility(View.GONE);
+        }
 
         taskList = (ListView) findViewById(R.id.taskList);
         refreshListView();

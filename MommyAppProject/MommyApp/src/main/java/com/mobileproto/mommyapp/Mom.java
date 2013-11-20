@@ -13,7 +13,7 @@ public class Mom {
 
     public Mom(String username){
         this.setName(username);
-        setValuesFromServer(this.getName());
+        //setValuesFromServer(this.getName());
         /*this.setName(name);
         this.setPercent_full(0);
         this.setTasks(new ArrayList<Task>());
