@@ -22,7 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PersonDetailActivity"/>
+        <activity android:name=".PersonDetailActivity"
+            android:parentActivityName="com.mobileproto.mommyapp.MainActivity" >
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.mobileproto.mommyapp.MainActivity" />
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 

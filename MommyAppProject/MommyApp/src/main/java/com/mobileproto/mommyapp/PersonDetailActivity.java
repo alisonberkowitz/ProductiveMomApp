@@ -35,6 +35,7 @@ public class PersonDetailActivity extends Activity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_detail);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         userName = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
         Log.d("dauser", userName);
