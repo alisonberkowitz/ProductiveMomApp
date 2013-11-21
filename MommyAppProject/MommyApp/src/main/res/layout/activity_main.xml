@@ -51,6 +51,8 @@
         android:text="Karen"
         android:id="@+id/textView"
         android:layout_below="@id/wine1"
+        android:layout_alignRight="@+id/wine1"
+        android:layout_alignLeft="@id/wine1"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -60,7 +62,9 @@
         android:text="Jennifer"
         android:id="@+id/textView2"
         android:layout_below="@+id/wine2"
-        android:layout_alignRight="@+id/wine2" />
+        android:layout_alignRight="@+id/wine2"
+        android:layout_alignLeft="@id/wine2"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,6 +73,8 @@
         android:text="Katherine"
         android:id="@+id/textView3"
         android:layout_below="@id/wine3"
+        android:layout_alignRight="@+id/wine3"
+        android:layout_alignLeft="@id/wine3"
         android:layout_centerHorizontal="true" />
 
     <ImageView
@@ -87,6 +93,8 @@
         android:text="Louis"
         android:id="@+id/textView4"
         android:layout_below="@+id/wine4"
-        android:layout_alignLeft="@+id/textView2" />
+        android:layout_alignLeft="@+id/wine4"
+        android:layout_alignRight="@id/wine4"
+        android:layout_gravity="center"/>
 
 </RelativeLayout>
