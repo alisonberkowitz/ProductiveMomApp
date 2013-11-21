@@ -25,6 +25,7 @@
         android:layout_marginTop="5dp"
         android:focusable="true"
         android:checked="false"
+        android:enabled="true"
         android:gravity="center"
         android:background="@color/dark_purple"
         android:layout_centerVertical="true"

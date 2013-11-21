@@ -44,7 +44,6 @@ public class TaskListAdapter extends ArrayAdapter {
 
             holder.taskText = (TextView) convertView.findViewById(R.id.taskText);
             holder.completedBox = (CheckBox) convertView.findViewById(R.id.completedBox);
-
             convertView.setTag(holder);
             holder.completedBox.setOnClickListener( new View.OnClickListener() {
                 public void onClick(View v) {
@@ -60,7 +59,6 @@ public class TaskListAdapter extends ArrayAdapter {
                 }
             });
         } else holder = (TaskHolder) convertView.getTag();
-
         Task task = this.tasks.get(position);
         holder.taskText.setText(task.text);
         //check or uncheck box depending on completion status of task
@@ -71,6 +69,7 @@ public class TaskListAdapter extends ArrayAdapter {
             holder.completedBox.setChecked(false);
         }
         if (!mainUser) {
+            Log.e("Buffer Error", "sad");
             holder.completedBox.setEnabled(false);
         }
         return convertView;

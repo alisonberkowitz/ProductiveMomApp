@@ -26,7 +26,6 @@ public class MainActivity extends Activity {
                 .edit()
                 .putString("userName", "Trish")
                 .commit();
-
         final ImageButton p1 = (ImageButton)findViewById(R.id.wine1);
         final ImageButton p2 = (ImageButton)findViewById(R.id.wine2);
         final ImageButton p3 = (ImageButton)findViewById(R.id.wine3);
@@ -82,6 +81,14 @@ public class MainActivity extends Activity {
         return null;
     }
     */
+
+    @Override
+    public void onResume()
+    {  // After a pause OR at startup
+        super.onResume();
+        updateFriends();
+        //Refresh your stuff here
+    }
       
     public void setMomImage(int numDone, ImageButton b){
         Log.d("MomTaks", "" + numDone);
@@ -206,7 +213,7 @@ public class MainActivity extends Activity {
         }
         if (momName.equals(friend1)) {
             friend1NumCompleted = taskCompleted;
-            setMomImage(friend2NumCompleted, (ImageButton)findViewById(R.id.wine2));
+            setMomImage(friend1NumCompleted, (ImageButton)findViewById(R.id.wine2));
         }
         if (momName.equals(friend2)) {
             friend2NumCompleted = taskCompleted;
