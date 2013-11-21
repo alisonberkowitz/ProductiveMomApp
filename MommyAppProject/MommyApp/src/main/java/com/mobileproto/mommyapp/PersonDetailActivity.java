@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,14 +63,17 @@ public class PersonDetailActivity extends Activity{
         newTask.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PersonDetailActivity.this);
-                builder.setTitle("New Task");
+                /*builder.setTitle("New Task");
 
-                final EditText input = new EditText(PersonDetailActivity.this);
-                //limit length of input
-                input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
                 // Specify the type of input expected;
-                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
-                builder.setView(input);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);*/
+
+                //set the view
+                View box = inflateDialog(R.layout.new_task_dialog);
+                builder.setView(box);
+                box.setBackgroundColor(R.color.purple);
+
+                final EditText input = (EditText) box.findViewById(R.id.input);
 
                 // Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -91,6 +95,11 @@ public class PersonDetailActivity extends Activity{
             }
     });
     }
+
+    private View inflateDialog(int layoutId){
+        return getLayoutInflater().inflate(layoutId, null);
+    }
+
     //Refresh Group List View
     public void refreshListView() {
 
