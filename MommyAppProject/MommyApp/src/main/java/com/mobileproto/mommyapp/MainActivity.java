@@ -27,13 +27,12 @@ public class MainActivity extends Activity {
                 .putString("userName", "Trish")
                 .commit();
 
-        updateFriends();
-
         final ImageButton p1 = (ImageButton)findViewById(R.id.wine1);
         final ImageButton p2 = (ImageButton)findViewById(R.id.wine2);
         final ImageButton p3 = (ImageButton)findViewById(R.id.wine3);
         final ImageButton p4 = (ImageButton)findViewById(R.id.wine4);
         final ImageView bottle = (ImageView) findViewById(R.id.imageView);
+        updateFriends();
 
         //Set on click listeners for all wine buttons
         p1.setOnClickListener(new Button.OnClickListener() {
@@ -85,31 +84,43 @@ public class MainActivity extends Activity {
     */
       
     public void setMomImage(int numDone, ImageButton b){
+        Log.d("MomTaks", "" + numDone);
         if (numDone >= 10 ){
             b.setBackgroundResource(R.drawable.glass_5);
         }
         else {
         switch (numDone){
             case 0:
+                Log.d("MomTACCCC", "0");
                 b.setBackgroundResource(R.drawable.glass_0);
+                break;
             case 1:
                 b.setBackgroundResource(R.drawable.glass_1);
+                break;
             case 2:
                 b.setBackgroundResource(R.drawable.glass_1);
+                break;
             case 3:
                 b.setBackgroundResource(R.drawable.glass_2);
+                break;
             case 4:
                 b.setBackgroundResource(R.drawable.glass_2);
+                break;
             case 5:
                 b.setBackgroundResource(R.drawable.glass_3);
+                break;
             case 6:
                 b.setBackgroundResource(R.drawable.glass_3);
+                break;
             case 7:
                 b.setBackgroundResource(R.drawable.glass_3);
+                break;
             case 8:
                 b.setBackgroundResource(R.drawable.glass_4);
+                break;
             case 9:
                 b.setBackgroundResource(R.drawable.glass_4);
+                break;
         }
         }
     }
@@ -128,30 +139,43 @@ public class MainActivity extends Activity {
         switch (level){
             case 0:
                 v.setImageResource(R.drawable.bottle_1);
+                break;
             case 1:
                 v.setImageResource(R.drawable.bottle_2);
+                break;
             case 2:
                 v.setImageResource(R.drawable.bottle_3);
+                break;
             case 3:
                 v.setImageResource(R.drawable.bottle_4);
+                break;
             case 4:
                 v.setImageResource(R.drawable.bottle_5);
+                break;
             case 5:
                 v.setImageResource(R.drawable.bottle_6);
+                break;
             case 6:
                 v.setImageResource(R.drawable.bottle_7);
+                break;
             case 7:
                 v.setImageResource(R.drawable.bottle_8);
+                break;
             case 8:
                 v.setImageResource(R.drawable.bottle_9);
+                break;
             case 9:
                 v.setImageResource(R.drawable.bottle_10);
+                break;
             case 10:
                 v.setImageResource(R.drawable.bottle_11);
+                break;
             case 11:
                 v.setImageResource(R.drawable.bottle_11);
+                break;
             case 12:
                 v.setImageResource(R.drawable.bottle_13);
+                break;
         }
     }
 
@@ -215,6 +239,8 @@ public class MainActivity extends Activity {
         updateTasksCompleted(friend2);
         updateTasksCompleted(friend3);
 
+        final TextView personName1 = (TextView)findViewById(R.id.textView);
+        personName1.setText("Me");
         final TextView personName2 = (TextView)findViewById(R.id.textView2);
         personName2.setText(friend1);
         final TextView personName3 = (TextView)findViewById(R.id.textView3);
