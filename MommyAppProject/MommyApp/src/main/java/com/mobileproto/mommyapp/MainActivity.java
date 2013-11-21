@@ -207,6 +207,7 @@ public class MainActivity extends Activity {
     }
 
     public void setFriends(ArrayList<String> friends) {
+
         //this is called when the async task in updateFriends is done
         //what to do with friends
     }

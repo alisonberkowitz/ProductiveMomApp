@@ -77,7 +77,7 @@ public class PersonDetailActivity extends Activity{
                     public void onClick(DialogInterface dialog, int which) {
                         String taskString = input.getText().toString();
                         AddTaskRequest updateHttpRequest = new
-                                AddTaskRequest("task");
+                                AddTaskRequest(PersonDetailActivity.this);
                         String url = "http://mommytask.herokuapp.com/" +
                                 name + "/createTask";
                         ArrayList urlParams = new ArrayList<String> ();

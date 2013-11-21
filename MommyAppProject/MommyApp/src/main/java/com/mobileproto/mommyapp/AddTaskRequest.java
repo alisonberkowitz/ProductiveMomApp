@@ -27,10 +27,10 @@ import java.util.List;
  * Created by mingram on 9/26/13.
  */
 public class AddTaskRequest extends AsyncTask<ArrayList, Void, String> {
-    private String type;
+    private PersonDetailActivity activity;
 
-    public AddTaskRequest(String type) {
-        this.type = type;
+    public AddTaskRequest(PersonDetailActivity activity) {
+        this.activity = activity;
     }
 
 
@@ -73,6 +73,6 @@ public class AddTaskRequest extends AsyncTask<ArrayList, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        //PersonDetailActivity.refreshListView();
+        activity.refreshListView();
     }
 }
