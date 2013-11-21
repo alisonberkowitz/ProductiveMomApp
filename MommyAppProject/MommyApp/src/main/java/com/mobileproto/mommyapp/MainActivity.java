@@ -136,13 +136,14 @@ public class MainActivity extends Activity {
     //The 13 comes from the fact that we are on a 0-12 scale
     public int setBottleLevel(){
         int totalTasks = myNumCompleted + friend3NumCompleted + friend1NumCompleted + friend2NumCompleted;
-        return (int) Math.floor(((double)totalTasks)/20.0)*13 ;
+        return (int) ((((totalTasks)/20.0))*13) ;
     }
 
     //Set the level of the wine bottle based on the completeness
     //of the mom's tasks
     public void setBottleImage(ImageView v){
         int level = setBottleLevel();
+        Log.i("bottle", Integer.toString(level));
         switch (level){
             case 0:
                 v.setImageResource(R.drawable.bottle_1);
