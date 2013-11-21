@@ -27,62 +27,19 @@ public class MainActivity extends Activity {
                 .putString("userName", "Trish")
                 .commit();
 
-        /*pull moms from the database-- takes the identity (Mac-i you said that was trivial right?
-
-         */
-
-        //This needs to be replaced by a lookup to get the
-        //correct local moms and her friends
-        /*
-
-        * */
-        //get the moms
-        final Mom mom1 = new Mom(getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", ""));//getMom(1);
-        final Mom mom2 = new Mom("Ella");//getMom(2);
-        final Mom mom3 = new Mom("Suzie");//getMom(3);
-        final Mom mom4 = new Mom("Leslie");//getMom(4);
-
-        //just for test
         updateFriends();
-        updateTasksCompleted(getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", ""));
 
-
-        //pull wine buttons
-        //Need to set it to appropriate value based on mom's
-        //progress
         final ImageButton p1 = (ImageButton)findViewById(R.id.wine1);
         final ImageButton p2 = (ImageButton)findViewById(R.id.wine2);
         final ImageButton p3 = (ImageButton)findViewById(R.id.wine3);
         final ImageButton p4 = (ImageButton)findViewById(R.id.wine4);
         final ImageView bottle = (ImageView) findViewById(R.id.imageView);
 
-        //set wine buttons to correct image
-        setMomImage(mom1, p1);
-        setMomImage(mom2, p2);
-        setMomImage(mom3, p3);
-        setMomImage(mom4, p4);
-
-        //set mom names to the correct names
-        final TextView personName1 = (TextView)findViewById(R.id.textView);
-        personName1.setText(mom1.getName());
-        final TextView personName2 = (TextView)findViewById(R.id.textView2);
-        personName2.setText(mom2.getName());
-        final TextView personName3 = (TextView)findViewById(R.id.textView3);
-        personName3.setText(mom3.getName());
-        final TextView personName4 = (TextView)findViewById(R.id.textView4);
-        personName4.setText(mom4.getName());
-
-        ArrayList<Mom> moms = new ArrayList<Mom>();
-        moms.add(mom1); moms.add(mom2); moms.add(mom3); moms.add(mom4);
-
-        setBottleImage(setBottleLevel(moms), bottle);
-
         //Set on click listeners for all wine buttons
         p1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                i.putExtra("name", mom1.getName());
-                i.putExtra("status", mom1.getPercent_full());
+                i.putExtra("name", me);
                 startActivity(i);
             }
         });
@@ -90,8 +47,7 @@ public class MainActivity extends Activity {
         p2.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                i.putExtra("name", mom2.getName());
-                i.putExtra("status", mom2.getPercent_full());
+                i.putExtra("name", friend1);
                 startActivity(i);
             }
         });
@@ -99,8 +55,7 @@ public class MainActivity extends Activity {
         p3.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                i.putExtra("name", mom3.getName());
-                i.putExtra("status", mom3.getPercent_full());
+                i.putExtra("name", friend2);
                 startActivity(i);
             }
         });
@@ -108,12 +63,20 @@ public class MainActivity extends Activity {
         p4.setOnClickListener( new Button.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), PersonDetailActivity.class);
-                i.putExtra("name", mom4.getName());
-                i.putExtra("status", mom4.getPercent_full());
+                i.putExtra("name", friend3);
                 startActivity(i);
             }
         });
     }
+    ArrayList<String> friendList;
+    String me;
+    String friend1;
+    String friend2;
+    String friend3;
+    int myNumCompleted=0;
+    int friend1NumCompleted=0;
+    int friend2NumCompleted=0;
+    int friend3NumCompleted=0;
 
     /*
     public Mom getMom(int num){
@@ -121,37 +84,48 @@ public class MainActivity extends Activity {
     }
     */
       
-    public void setMomImage(Mom m, ImageButton b){
-        switch (m.getPercent_full()){
+    public void setMomImage(int numDone, ImageButton b){
+        if (numDone >= 10 ){
+            b.setBackgroundResource(R.drawable.glass_5);
+        }
+        else {
+        switch (numDone){
             case 0:
                 b.setBackgroundResource(R.drawable.glass_0);
             case 1:
                 b.setBackgroundResource(R.drawable.glass_1);
             case 2:
-                b.setBackgroundResource(R.drawable.glass_2);
+                b.setBackgroundResource(R.drawable.glass_1);
             case 3:
-                b.setBackgroundResource(R.drawable.glass_3);
+                b.setBackgroundResource(R.drawable.glass_2);
             case 4:
-                b.setBackgroundResource(R.drawable.glass_4);
+                b.setBackgroundResource(R.drawable.glass_2);
             case 5:
-                b.setBackgroundResource(R.drawable.glass_5);
+                b.setBackgroundResource(R.drawable.glass_3);
+            case 6:
+                b.setBackgroundResource(R.drawable.glass_3);
+            case 7:
+                b.setBackgroundResource(R.drawable.glass_3);
+            case 8:
+                b.setBackgroundResource(R.drawable.glass_4);
+            case 9:
+                b.setBackgroundResource(R.drawable.glass_4);
+        }
         }
     }
 
     //for now, let's assume it takes 20 tasks to fill the bottle
     //The 13 comes from the fact that we are on a 0-12 scale
-    public int setBottleLevel(ArrayList<Mom> moms){
-        int totalTasks = 0;
-        for (Mom mom:moms){
-            totalTasks += mom.getPercent_full();
-        }
+    public int setBottleLevel(){
+        int totalTasks = myNumCompleted + friend3NumCompleted + friend1NumCompleted + friend2NumCompleted;
         return (int) Math.floor(((double)totalTasks)/20.0)*13 ;
     }
 
     //Set the level of the wine bottle based on the completeness
     //of the mom's tasks
-    public void setBottleImage(int numCompleted, ImageView v){
-        switch (numCompleted){
+    public void setBottleImage(ImageView v){
+        int level = setBottleLevel();
+        switch (level){
             case 0:
                 v.setImageResource(R.drawable.bottle_1);
             case 1:
@@ -202,6 +176,24 @@ public class MainActivity extends Activity {
         //this is called when the async task in updateTasksCompleted is done
         //do something with the
         Log.i("momTask", momName + "," + taskCompleted);
+        if (momName.equals(me)) {
+            myNumCompleted = taskCompleted;
+            setMomImage(myNumCompleted, (ImageButton)findViewById(R.id.wine1));
+        }
+        if (momName.equals(friend1)) {
+            friend1NumCompleted = taskCompleted;
+            setMomImage(friend2NumCompleted, (ImageButton)findViewById(R.id.wine2));
+        }
+        if (momName.equals(friend2)) {
+            friend2NumCompleted = taskCompleted;
+            setMomImage(friend2NumCompleted, (ImageButton)findViewById(R.id.wine3));
+        }
+        if (momName.equals(friend3)) {
+            friend3NumCompleted = taskCompleted;
+            setMomImage(friend3NumCompleted, (ImageButton)findViewById(R.id.wine4));
+        }
+        setBottleImage((ImageView) findViewById(R.id.imageView));
+
     }
 
     public void updateFriends() {
@@ -212,6 +204,23 @@ public class MainActivity extends Activity {
 
     public void setFriends(ArrayList<String> friends) {
         Log.i("friends", friends.toString());
+        friendList = friends;
+        me = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
+        friend1 = friendList.get(0);
+        friend2 = friendList.get(1);
+        friend3 = friendList.get(2);
+
+        updateTasksCompleted(me);
+        updateTasksCompleted(friend1);
+        updateTasksCompleted(friend2);
+        updateTasksCompleted(friend3);
+
+        final TextView personName2 = (TextView)findViewById(R.id.textView2);
+        personName2.setText(friend1);
+        final TextView personName3 = (TextView)findViewById(R.id.textView3);
+        personName3.setText(friend2);
+        final TextView personName4 = (TextView)findViewById(R.id.textView4);
+        personName4.setText(friend3);
         //this is called when the async task in updateFriends is done
         //what to do with friends
     }

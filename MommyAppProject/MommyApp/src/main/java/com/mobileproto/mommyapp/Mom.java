@@ -24,7 +24,7 @@ public class Mom {
 
 
     //increments by 10%
-    public void setFillLevel(){
+    public void setFillLevel(int numCompleted){
         if (this.getPercent_full() == 5) {
             //for now, lets just leave it
         }
