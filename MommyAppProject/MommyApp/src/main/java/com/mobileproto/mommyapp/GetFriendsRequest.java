@@ -30,7 +30,7 @@ public class GetFriendsRequest extends AsyncTask<String, Integer, ArrayList<Stri
         this.mainActivity = mainActivity;
     }
 
-    protected void onPostExecute(int result){
+    protected void onPostExecute(ArrayList<String> result){
         this.mainActivity.setFriends(result);
     }
 

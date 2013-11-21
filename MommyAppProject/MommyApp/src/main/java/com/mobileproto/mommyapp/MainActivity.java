@@ -200,13 +200,13 @@ public class MainActivity extends Activity {
         //do something with the
     }
 
-    public void updateFreinds() {
+    public void updateFriends() {
         String userName = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
         new GetFriendsRequest(this).execute("http://mommytask.herokuapp.com/" +
                 userName + "/friends");
     }
 
-    public void setFriends(int result) {
+    public void setFriends(ArrayList<String> friends) {
         //this is called when the async task in updateFriends is done
         //what to do with friends
     }
