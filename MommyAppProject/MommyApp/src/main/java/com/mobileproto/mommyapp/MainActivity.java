@@ -42,6 +42,9 @@ public class MainActivity extends Activity {
         final Mom mom3 = new Mom("Suzie");//getMom(3);
         final Mom mom4 = new Mom("Leslie");//getMom(4);
 
+        //just for test
+        updateFriends();
+        updateTasksCompleted(getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", ""));
 
 
         //pull wine buttons
@@ -196,7 +199,20 @@ public class MainActivity extends Activity {
     }
 
     public void setMomsTaskCompleted(String momName, int taskCompleted) {
-        //this is called when the async task
+        //this is called when the async task in updateTasksCompleted is done
         //do something with the
+        Log.i("momTask", momName + "," + taskCompleted);
+    }
+
+    public void updateFriends() {
+        String userName = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
+        new GetFriendsRequest(this).execute("http://mommytask.herokuapp.com/" +
+                userName + "/friends");
+    }
+
+    public void setFriends(ArrayList<String> friends) {
+        Log.i("friends", friends.toString());
+        //this is called when the async task in updateFriends is done
+        //what to do with friends
     }
 }

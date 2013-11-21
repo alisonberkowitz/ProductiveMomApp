@@ -36,18 +36,42 @@ public class JsonParser {
             JSONObject obj = new JSONObject(responseString);
             taskCompleted = obj.getInt("tasksCompleted");
         } catch (JSONException e){
-
+            Log.i("jsonParse", "get int from tasksCompleted");
         }
+        Log.i("momTask", Integer.toString(taskCompleted));
         return taskCompleted;
     }
 
     /*Mac-i please do this one
     Should return an ArrayList<String> w/ friends username
     */
-    public ArrayList<String> getFriends(String responseString)throws JSONException{
-       JSONObject obj = new JSONObject(responseString);
-       JSONArray json =  obj.getJSONArray("friends");
-        return null;
+    public ArrayList<String> getFriends(String responseString){
+        ArrayList<String> friends = new ArrayList<String>();
+        if (responseString != null && !responseString.isEmpty()) {
+            if (!responseString.equals("")){
+                JSONArray jArray = new JSONArray();
+                JSONObject jsonObj = null;
+                try{
+                    jsonObj = new JSONObject(responseString);
+                }catch (JSONException e){
+                    Log.i("jsonParse", "error converting string to json object");
+                }
+                try {
+                    jArray = jsonObj.getJSONArray("friends");
+                } catch(JSONException e) {
+                    e.printStackTrace();
+                    Log.i("jsonParse", "error converting to json array");
+                }
+                for (int i=0; i < jArray.length(); i++)
+                    try {
+                        String friend = jArray.getString(i);
+                        friends.add(friend);
+                    } catch (JSONException e) {
+                        Log.i("jsonParse", "error in iterating");
+                    }
+            }
+        } else {Log.i("jsonParse", "result is null");}
+        return friends;
     }
 
     public List<Task> getTasks(String responseString) {
@@ -79,7 +103,9 @@ public class JsonParser {
         }
         return taskList;
     }
+
 }
+
 /*
     public List<List<String>> JSONParse(String responseString) throws JSONException {
         JSONObject obj = new JSONObject(responseString);

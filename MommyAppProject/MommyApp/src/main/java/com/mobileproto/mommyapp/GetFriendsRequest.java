@@ -19,38 +19,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.ArrayList;
 
-public class GetNumberTasksCompletedRequest extends AsyncTask<String, Integer, Integer> {
-    //save feedlistadapter as a property of server request
+public class GetFriendsRequest extends AsyncTask<String, Integer, ArrayList<String>> {
     public MainActivity mainActivity;
-    public String user;
-
     //getting data from the intranets
 
-    public GetNumberTasksCompletedRequest(MainActivity mainActivity, String user){
+    public GetFriendsRequest(MainActivity mainActivity){
         //assigning the inputs to stuff in here
         this.mainActivity = mainActivity;
-        this.user = user;
     }
 
-    protected void onPostExecute(Integer result){
-        this.mainActivity.setMomsTaskCompleted(user, result);
+    protected void onPostExecute(ArrayList<String> result){
+        this.mainActivity.setFriends(result);
     }
 
     @Override
-    protected Integer doInBackground(String... uri){
+    protected ArrayList<String> doInBackground(String... uri){
         //url to make request
         String url = uri[0];
 
         // tweets JSONArray
         JSONArray tasks = null;
 
-
-        //geting JSON string from URL
+        //getting JSON string from URL
         String responseString = getJSONFromUrl(url);
 
-        int Data = new JsonParser().getNumTasksCompleted(responseString);
+        ArrayList<String> Data = new JsonParser().getFriends(responseString);
         return Data;
     }
 
