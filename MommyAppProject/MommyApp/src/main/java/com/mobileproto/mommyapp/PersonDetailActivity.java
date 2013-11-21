@@ -103,7 +103,7 @@ public class PersonDetailActivity extends Activity{
 
     //Refresh Group List View
     public void refreshListView() {
-
+        tasks.clear();
         this.taskListAdapter = new TaskListAdapter(this, this.tasks, userName.equals(name));
         this.taskList.setAdapter(this.taskListAdapter);
         Log.e("Buffer Error", name);
