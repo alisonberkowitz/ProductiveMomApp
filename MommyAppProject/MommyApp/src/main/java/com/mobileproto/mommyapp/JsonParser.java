@@ -36,8 +36,9 @@ public class JsonParser {
             JSONObject obj = new JSONObject(responseString);
             taskCompleted = obj.getInt("tasksCompleted");
         } catch (JSONException e){
-
+            Log.i("jsonParse", "get int from tasksCompleted");
         }
+        Log.i("momTask", Integer.toString(taskCompleted));
         return taskCompleted;
     }
 

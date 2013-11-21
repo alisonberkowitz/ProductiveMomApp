@@ -34,7 +34,7 @@ public class GetNumberTasksCompletedRequest extends AsyncTask<String, Integer, I
         this.user = user;
     }
 
-    protected void onPostExecute(int result){
+    protected void onPostExecute(Integer result){
         this.mainActivity.setMomsTaskCompleted(user, result);
     }
 
@@ -91,7 +91,6 @@ public class GetNumberTasksCompletedRequest extends AsyncTask<String, Integer, I
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
-        Log.e("Buffer Error", json);
         return json;
 
     }

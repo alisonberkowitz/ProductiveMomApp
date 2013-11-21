@@ -42,6 +42,9 @@ public class MainActivity extends Activity {
         final Mom mom3 = new Mom("Suzie");//getMom(3);
         final Mom mom4 = new Mom("Leslie");//getMom(4);
 
+        //just for test
+        updateFriends();
+        updateTasksCompleted(getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", ""));
 
 
         //pull wine buttons
@@ -198,6 +201,7 @@ public class MainActivity extends Activity {
     public void setMomsTaskCompleted(String momName, int taskCompleted) {
         //this is called when the async task in updateTasksCompleted is done
         //do something with the
+        Log.i("momTask", momName + "," + taskCompleted);
     }
 
     public void updateFriends() {
@@ -207,7 +211,7 @@ public class MainActivity extends Activity {
     }
 
     public void setFriends(ArrayList<String> friends) {
-
+        Log.i("friends", friends.toString());
         //this is called when the async task in updateFriends is done
         //what to do with friends
     }

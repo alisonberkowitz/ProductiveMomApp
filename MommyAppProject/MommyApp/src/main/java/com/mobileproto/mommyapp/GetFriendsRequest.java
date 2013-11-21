@@ -86,7 +86,6 @@ public class GetFriendsRequest extends AsyncTask<String, Integer, ArrayList<Stri
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
-        Log.e("Buffer Error", json);
         return json;
 
     }
