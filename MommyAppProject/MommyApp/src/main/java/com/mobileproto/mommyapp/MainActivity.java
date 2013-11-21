@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 
         //set mom names to the correct names
         final TextView personName1 = (TextView)findViewById(R.id.textView);
-        personName1.setText(mom1.getName());
+        personName1.setText("Me");
         final TextView personName2 = (TextView)findViewById(R.id.textView2);
         personName2.setText(mom2.getName());
         final TextView personName3 = (TextView)findViewById(R.id.textView3);

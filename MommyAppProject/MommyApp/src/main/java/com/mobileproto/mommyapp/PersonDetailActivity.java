@@ -50,6 +50,7 @@ public class PersonDetailActivity extends Activity{
         if (name.equals(userName)){
             Log.d("daif", "same");
             newTask.setVisibility(View.VISIBLE);
+            personName.setText("Me");
         }
         else{
             Log.d("username: ", userName);
