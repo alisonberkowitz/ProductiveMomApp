@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -64,7 +65,9 @@ public class PersonDetailActivity extends Activity{
                 builder.setTitle("New Task");
 
                 final EditText input = new EditText(PersonDetailActivity.this);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                //limit length of input
+                input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
+                // Specify the type of input expected;
                 input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
 
