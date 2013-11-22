@@ -24,12 +24,19 @@ public class TaskListAdapter extends ArrayAdapter {
     Boolean mainUser;
 
 
-    public TaskListAdapter(Context context, List<Task> groups,Boolean mainUser){
-        super(context, R.layout.task_item, groups);
+    public TaskListAdapter(Context context, List<Task> tasks,Boolean mainUser){
+        super(context, R.layout.task_item, tasks);
         this.context = context;
-        this.tasks = groups;
+        this.tasks = sortByCompletion(tasks);
         this.mainUser = mainUser;
     }
+
+    public void replaceAll(List<Task> tasks) {
+        this.tasks.clear();
+        addAll(sortByCompletion(tasks));
+        notifyDataSetChanged();
+    }
+
     private class TaskHolder{
         TextView taskText;
         CheckBox completedBox;
@@ -37,7 +44,7 @@ public class TaskListAdapter extends ArrayAdapter {
 
     public View getView(final int position, View convertView, ViewGroup parent){
         TaskHolder holder;
-        if(convertView == null){
+        if(true){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_item, parent, false);
             holder = new TaskHolder();
@@ -51,6 +58,7 @@ public class TaskListAdapter extends ArrayAdapter {
                     cb.setEnabled(false);
                     CompleteTaskRequest updateHttpRequest = new
                             CompleteTaskRequest();
+                    tasks.get(position).setStatus(true);
                     String url = "http://mommytask.herokuapp.com/" +
                             tasks.get(position).getId() + "/completed";
                     ArrayList urlParams = new ArrayList<String> ();
@@ -62,6 +70,7 @@ public class TaskListAdapter extends ArrayAdapter {
         Task task = this.tasks.get(position);
         holder.taskText.setText(task.text);
         //check or uncheck box depending on completion status of task
+
         if (task.done) {
             holder.completedBox.setChecked(true);
             holder.completedBox.setEnabled(false);
@@ -74,5 +83,23 @@ public class TaskListAdapter extends ArrayAdapter {
             holder.completedBox.setEnabled(false);
         }
         return convertView;
+    }
+
+    public List<Task> sortByCompletion(List<Task> tasks) {
+        if (tasks.size()>0) {
+            List<Task> sortedTasks = new ArrayList<Task>();
+            for(int i=0;i<tasks.size();i++) {
+                if (tasks.get(i).getStatus()) {
+                    sortedTasks.add(tasks.get(i));
+                } else {
+                    sortedTasks.add(0,tasks.get(i));
+                }
+                Log.d("sortingTest1",tasks.get(i).getText());
+            }
+            Log.d("sortingTest",tasks.toString());
+            return sortedTasks;
+        } else {
+            return tasks;
+        }
     }
 }

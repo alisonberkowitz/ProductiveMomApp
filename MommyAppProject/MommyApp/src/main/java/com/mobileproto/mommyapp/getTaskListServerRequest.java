@@ -40,7 +40,7 @@ public class getTaskListServerRequest extends AsyncTask<String, Integer, List<Ta
 
     protected void onPostExecute(List<Task> result){
         Log.e("Buffer Error", result.toString());
-        this.taskListAdapter.addAll(result);
+        this.taskListAdapter.replaceAll(result);
         this.taskListAdapter.notifyDataSetChanged();
     }
 
