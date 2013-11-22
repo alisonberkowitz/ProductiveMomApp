@@ -21,9 +21,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+
 public class GetFriendsRequest extends AsyncTask<String, Integer, ArrayList<String>> {
     public MainActivity mainActivity;
-    //getting data from the intranets
 
     public GetFriendsRequest(MainActivity mainActivity){
         //assigning the inputs to stuff in here
@@ -39,16 +39,15 @@ public class GetFriendsRequest extends AsyncTask<String, Integer, ArrayList<Stri
         //url to make request
         String url = uri[0];
 
-        // tweets JSONArray
-        JSONArray tasks = null;
-
         //getting JSON string from URL
         String responseString = getJSONFromUrl(url);
 
+        //send data to parser and return it
         ArrayList<String> Data = new JsonParser().getFriends(responseString);
         return Data;
     }
 
+    //return the json for a given URL
     public String getJSONFromUrl(String url) {
         InputStream is = null;
         JSONObject jObj = null;

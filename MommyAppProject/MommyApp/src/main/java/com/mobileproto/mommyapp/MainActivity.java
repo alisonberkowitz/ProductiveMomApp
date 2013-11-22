@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -76,11 +75,6 @@ public class MainActivity extends Activity {
     int friend2NumCompleted=0;
     int friend3NumCompleted=0;
 
-    /*
-    public Mom getMom(int num){
-        return null;
-    }
-    */
 
     @Override
     public void onResume()
@@ -91,14 +85,12 @@ public class MainActivity extends Activity {
     }
       
     public void setMomImage(int numDone, ImageButton b){
-        Log.d("MomTaks", "" + numDone);
         if (numDone >= 10 ){
             b.setBackgroundResource(R.drawable.glass_5);
         }
         else {
         switch (numDone){
             case 0:
-                Log.d("MomTACCCC", "0");
                 b.setBackgroundResource(R.drawable.glass_0);
                 break;
             case 1:
@@ -143,7 +135,6 @@ public class MainActivity extends Activity {
     //of the mom's tasks
     public void setBottleImage(ImageView v){
         int level = setBottleLevel();
-        Log.i("bottle", Integer.toString(level));
         switch (level){
             case 0:
                 v.setImageResource(R.drawable.bottle_1);
@@ -207,7 +198,6 @@ public class MainActivity extends Activity {
     public void setMomsTaskCompleted(String momName, int taskCompleted) {
         //this is called when the async task in updateTasksCompleted is done
         //do something with the
-        Log.i("momTask", momName + "," + taskCompleted);
         if (momName.equals(me)) {
             myNumCompleted = taskCompleted;
             setMomImage(myNumCompleted, (ImageButton)findViewById(R.id.wine1));
@@ -235,7 +225,6 @@ public class MainActivity extends Activity {
     }
 
     public void setFriends(ArrayList<String> friends) {
-        Log.i("friends", friends.toString());
         friendList = friends;
         me = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("userName", "");
         friend1 = friendList.get(0);

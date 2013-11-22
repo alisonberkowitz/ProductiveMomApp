@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Mac-I on 11/16/13.
  */
-
+//custom task list adapter
 public class TaskListAdapter extends ArrayAdapter {
     Context context;
     List<Task> tasks;
     Boolean mainUser;
 
-
+    //create custom constructor
     public TaskListAdapter(Context context, List<Task> tasks,Boolean mainUser){
         super(context, R.layout.task_item, tasks);
         this.context = context;
@@ -31,17 +30,20 @@ public class TaskListAdapter extends ArrayAdapter {
         this.mainUser = mainUser;
     }
 
+    //add method to easily replace all tasks in list.
     public void replaceAll(List<Task> tasks) {
         this.tasks.clear();
         addAll(sortByCompletion(tasks));
         notifyDataSetChanged();
     }
 
+    //create task holder
     private class TaskHolder{
         TextView taskText;
         CheckBox completedBox;
     }
 
+    //setView of each task item
     public View getView(final int position, View convertView, ViewGroup parent){
         TaskHolder holder;
         if(true){
@@ -79,12 +81,12 @@ public class TaskListAdapter extends ArrayAdapter {
             holder.completedBox.setEnabled(true);
         }
         if (!mainUser) {
-            Log.e("Buffer Error", "sad");
             holder.completedBox.setEnabled(false);
         }
         return convertView;
     }
 
+    //sort task list so uncompleted task are at the top if the list
     public List<Task> sortByCompletion(List<Task> tasks) {
         if (tasks.size()>0) {
             List<Task> sortedTasks = new ArrayList<Task>();
@@ -94,9 +96,7 @@ public class TaskListAdapter extends ArrayAdapter {
                 } else {
                     sortedTasks.add(0,tasks.get(i));
                 }
-                Log.d("sortingTest1",tasks.get(i).getText());
             }
-            Log.d("sortingTest",tasks.toString());
             return sortedTasks;
         } else {
             return tasks;

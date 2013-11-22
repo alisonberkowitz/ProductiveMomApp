@@ -1,6 +1,5 @@
 package com.mobileproto.mommyapp;
 
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Chloe Local on 11/19/13.
+ * Created by mingram on 11/19/13.
  */
 public class JsonParser {
     String username = "";
@@ -23,12 +22,8 @@ public class JsonParser {
         this.username = userName;
     };
 
-    public ArrayList<Task> parseTaskList(){
-        return null;
-    }
-
     /*
-
+        parses the number of task for a given user and return and int representing tasks completed
      */
     public int getNumTasksCompleted(String responseString) {
         int taskCompleted = 0;
@@ -36,14 +31,12 @@ public class JsonParser {
             JSONObject obj = new JSONObject(responseString);
             taskCompleted = obj.getInt("tasksCompleted");
         } catch (JSONException e){
-            Log.i("jsonParse", "get int from tasksCompleted");
         }
-        Log.i("momTask", Integer.toString(taskCompleted));
         return taskCompleted;
     }
 
-    /*Mac-i please do this one
-    Should return an ArrayList<String> w/ friends username
+    /*
+    parses the json for friends and returns an arraylist of friends (Strings)
     */
     public ArrayList<String> getFriends(String responseString){
         ArrayList<String> friends = new ArrayList<String>();
@@ -74,6 +67,10 @@ public class JsonParser {
         return friends;
     }
 
+
+    /*
+    parses the json string of tasks and returns a list of tasks
+    */
     public List<Task> getTasks(String responseString) {
         List<Task> taskList = new ArrayList<Task>();
         JSONArray jArray = new JSONArray();
@@ -105,24 +102,3 @@ public class JsonParser {
     }
 
 }
-
-/*
-    public List<List<String>> JSONParse(String responseString) throws JSONException {
-        JSONObject obj = new JSONObject(responseString);
-        List<List<String>> res = new ArrayList<List<String>>();
-        JSONArray array;
-        array = obj.getJSONArray("tweets");
-
-        for (int j = 0; j<array.length(); j++){
-            List<String> inner = new ArrayList<String>();
-            inner.add(array.getJSONObject(j).getString("tweet"));
-            inner.add(array.getJSONObject(j).getString("username"));
-            inner.add(array.getJSONObject(j).getString("date"));
-            inner.add(array.getJSONObject(j).getString("_id"));
-            res.add(inner);
-        }
-        return res;
-
-    }
-
-    */

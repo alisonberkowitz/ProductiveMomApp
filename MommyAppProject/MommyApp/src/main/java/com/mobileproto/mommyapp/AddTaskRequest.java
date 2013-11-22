@@ -29,12 +29,14 @@ import java.util.List;
 public class AddTaskRequest extends AsyncTask<ArrayList, Void, String> {
     private PersonDetailActivity activity;
 
+    //create constructor passign in the person detail activity
     public AddTaskRequest(PersonDetailActivity activity) {
         this.activity = activity;
     }
 
 
     @Override
+    //send task to server
     protected String doInBackground(ArrayList... uri){
         HttpClient httpclient = new DefaultHttpClient();
         ArrayList<String> current = uri[0];
@@ -71,6 +73,7 @@ public class AddTaskRequest extends AsyncTask<ArrayList, Void, String> {
     }
 
     @Override
+    //when done tell the person detail view to update its task list
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         activity.refreshListView();

@@ -1,10 +1,5 @@
 package com.mobileproto.mommyapp;
 
-/**
- * Created by mmay on 9/29/13.
- */
-
-
 import android.os.AsyncTask;
 
 import org.apache.http.HttpResponse;
@@ -24,15 +19,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mingram on 9/26/13.
+ * Created by mingram on 11/20/13.
  */
 public class CompleteTaskRequest extends AsyncTask<ArrayList, Void, String> {
 
+    //create constructor
     public CompleteTaskRequest() {
     }
 
 
     @Override
+    //send request to server marking task as completed
     protected String doInBackground(ArrayList... uri){
         HttpClient httpclient = new DefaultHttpClient();
         ArrayList<String> current = uri[0];
@@ -60,11 +57,6 @@ public class CompleteTaskRequest extends AsyncTask<ArrayList, Void, String> {
             //TODO Handle problems..
         }
         return responseString;
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
     }
 
 }

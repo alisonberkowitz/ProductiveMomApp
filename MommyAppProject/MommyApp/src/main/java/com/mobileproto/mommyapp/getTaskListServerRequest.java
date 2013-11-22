@@ -8,40 +8,27 @@ import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class getTaskListServerRequest extends AsyncTask<String, Integer, List<Task>> {
-    //save feedlistadapter as a property of server request
+    //save taskListAdapter as a property of server request
     public TaskListAdapter taskListAdapter;
 
-    //getting data from the intranets
 
     public getTaskListServerRequest(TaskListAdapter taskListAdapter){
         //assigning the inputs to stuff in here
         this.taskListAdapter = taskListAdapter;
-    }
-
-    protected void onPostExecute(List<Task> result){
-        Log.e("Buffer Error", result.toString());
-        this.taskListAdapter.replaceAll(result);
-        this.taskListAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -49,13 +36,10 @@ public class getTaskListServerRequest extends AsyncTask<String, Integer, List<Ta
         //url to make request
         String url = uri[0];
 
-        // tweets JSONArray
-        JSONArray tasks = null;
-
-
         //geting JSON string from URL
         String responseString = getJSONFromUrl(url);
 
+        //parse tasks and return result
         List<Task> Data = new JsonParser().getTasks(responseString);
         return Data;
     }
@@ -97,8 +81,12 @@ public class getTaskListServerRequest extends AsyncTask<String, Integer, List<Ta
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
-        Log.e("Buffer Error", json);
         return json;
 
+    }
+
+    //replace items in task listview
+    protected void onPostExecute(List<Task> result){
+        this.taskListAdapter.replaceAll(result);
     }
 }
