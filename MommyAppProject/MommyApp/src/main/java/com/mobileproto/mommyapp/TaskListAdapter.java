@@ -67,6 +67,7 @@ public class TaskListAdapter extends ArrayAdapter {
             holder.completedBox.setEnabled(false);
         } else {
             holder.completedBox.setChecked(false);
+            holder.completedBox.setEnabled(true);
         }
         if (!mainUser) {
             Log.e("Buffer Error", "sad");
